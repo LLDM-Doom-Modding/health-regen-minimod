@@ -1,0 +1,30 @@
+version "3.3.0"
+
+class HPRegenHandler: EventHandler {
+	override void WorldTick() {
+		if ( lldm_hpregen_amount == 0 )
+			return; // Do not try to regenerate anyone if healing amount is zero.
+
+
+		int regenticks = int( ceil( lldm_hpregen_rate * 35.0 ) );
+
+		if ( !!( level.maptime % max( 1, regenticks ) ) )
+			return;	// Skip all ticks with no regenerative actions.
+
+
+		// Do not waste the CPU time when not necessary.
+		int realmaxplayers = ( multiplayer? MAXPLAYERS : 1 );
+
+		for ( int i = 0; i < realmaxplayers; i++ ) {
+			if ( playeringame[ i ] && players[ i ].mo ) {
+				PlayerPawn player = players[ i ].mo;
+
+				// Regeneration itself:
+				if ( player.health < lldm_hpregen_maxhp && !player.bKILLED && player.health > 0 )
+					player.A_SetHealth( min( player.health + lldm_hpregen_amount, lldm_hpregen_maxhp ) );
+			}
+		}
+
+	} // of override void WorldTick() {}
+
+} // of class HPRegenHandler: EventHandler {}

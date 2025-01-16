@@ -1,0 +1,22 @@
+//
+
+AddOptionMenu "OptionsMenu" {
+	StaticText " "
+	Submenu "Health regeneration", "HPRegeneration_OptionsMenu"
+}
+
+OptionMenu "HPRegeneration_OptionsMenu" {
+    Title "Health regeneration options"
+
+	StaticText " "
+	ScaleSlider "Regeneration amount",			"lldm_hpregen_amount", 0, 100, 1, "Disable regeneration"
+	StaticText "Amount of 0 disables the regeneration.", DARKGRAY
+
+	StaticText " "
+	Slider "Regeneration rate (in sec, x0.1)",	"lldm_hpregen_rate", 0.1, 60.0, 0.1, 1
+	Slider "Regeneration rate (in sec, x1)",	"lldm_hpregen_rate", 0.1, 60.0, 1.0, 1
+
+	StaticText " "
+	Slider "Regeneration health maximum (x1)",	"lldm_hpregen_maxhp", 2, 200, 1, 0
+	Slider "Regeneration health maximum (x10)",	"lldm_hpregen_maxhp", 2, 200, 10, 0
+}

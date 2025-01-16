@@ -1,0 +1,10 @@
+*.zsc 		linguist-language=C#
+*.acs		linguist-language=C
+CVARINFO 	linguist-language=C
+KEYCONF 	linguist-language=D
+MAPINFO 	linguist-language=C
+MENUDEF 	linguist-language=C++
+MENUDEF.* 	linguist-language=C++
+TRNSLATE 	linguist-language=C
+LANGUAGE.*	linguist-language=C
+FONTDEFS	linguist-language=C
